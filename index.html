@@ -285,17 +285,17 @@
                 <div class="col-md-5 col-sm-5">
                   <div class="form-group">
                     <label for="name" class="sr-only">Nama</label>
-                    <input type="name" class="form-control" id="name" placeholder="Nama">
+                    <input type="name" class="form-control" id="name" placeholder="Nama" onkeypress="validateGreetingForm()">
                   </div>
                 </div>
                 <div class="col-md-5 col-sm-5">
                   <div class="form-group">
                     <label for="message" class="sr-only">Ucapan</label>
-                    <input type="text" class="form-control" id="message" placeholder="Ucapan">
+                    <input type="text" class="form-control" id="message" placeholder="Ucapan" onkeypress="validateGreetingForm()">
                   </div>
                 </div>
                 <div class="col-md-2 col-sm-2">
-                  <button type="button" onclick="contactViaWhatsapp()" class="btn btn-default btn-block" style="padding-left: 0; padding-right: 0;">Kirim</button>
+                  <button id="sendWhatsapp" type="button" onclick="contactViaWhatsapp()" class="btn btn-default btn-block" style="padding-left: 0; padding-right: 0;" disabled>Kirim</button>
                 </div>
               </form>
             </div>
@@ -409,6 +409,14 @@
         var name = document.getElementById("name").value;
         var comments = document.getElementById("message").value;
         window.open('https://wa.me/6285740040034?text=Saya%20' + name + '%20mengucapkan%20' + comments);
+      }
+
+      function validateGreetingForm() {
+        if (document.getElementById("name").value === "" && document.getElementById("message").value === "") { 
+              document.getElementById('sendWhatsapp').disabled = true; 
+          } else { 
+              document.getElementById('sendWhatsapp').disabled = false;
+          }
       }
 
       $('.gallery-1-link').magnificPopup({
