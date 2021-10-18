@@ -1120,6 +1120,22 @@ form label {
     top: 15em;
   }
 }
+.bride-prefix-location {
+  display: none;
+}
+@media screen and (max-width: 480px) {
+  .bride-prefix-location {
+    display: inline;
+  }
+}
+.bride-suffix-location {
+  display: inline;
+}
+@media screen and (max-width: 480px) {
+  .bride-suffix-location {
+    display: none;
+  }
+}
 
 .couple-half {
   width: 49%;
