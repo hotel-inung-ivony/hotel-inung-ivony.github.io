@@ -21,6 +21,19 @@
 		var clone2 = $('.menu-2 > ul').clone();
 		$('#fh5co-offcanvas').append(clone2);
 
+		document.querySelectorAll('a[class~="fh5co-nav-link"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+	
+				$('body').removeClass('offcanvas');
+				$('.js-fh5co-nav-toggle').removeClass('active');
+				
+				document.querySelector(this.getAttribute('href')).scrollIntoView({
+					behavior: 'smooth'
+				});
+			});
+		});
+
 		$('#fh5co-offcanvas .has-dropdown').addClass('offcanvas-has-dropdown');
 		$('#fh5co-offcanvas')
 			.find('li')
@@ -62,6 +75,20 @@
 			event.preventDefault();
 		});
 	};
+
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		anchor.addEventListener('click', function (e) {
+			e.preventDefault();
+
+			if ($('body').hasClass('overflow offcanvas')) {
+				$('body').removeClass('overflow offcanvas');
+			}
+
+			document.querySelector(this.getAttribute('href')).scrollIntoView({
+				behavior: 'smooth'
+			});
+		});
+	});
 
 	var contentWayPoint = function() {
 		var i = 0;
